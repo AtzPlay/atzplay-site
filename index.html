@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09090d">
+<title>ATZPLAY | Hikâyenin Başladığı Yer</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#09090d;color:#fff;font-family:Arial,sans-serif}
+header{height:70px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:#101015;border-bottom:1px solid #29232a;position:sticky;top:0;z-index:5}
+.logo{font-size:25px;font-weight:900;letter-spacing:1px;color:#fff}
+.logo span{color:#bd2946}
+nav{display:flex;gap:20px}
+nav a{color:#ddd;text-decoration:none;font-size:14px}
+.hero{min-height:420px;padding:65px 7%;display:flex;align-items:center;background:linear-gradient(90deg,#09090d 15%,#09090dbb 55%,transparent),linear-gradient(0deg,#09090d,transparent),url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1400') center/cover}
+.hero-content{max-width:520px}
+.tag{color:#e14a68;font-size:12px;letter-spacing:3px;font-weight:bold}
+h1{font-size:clamp(38px,7vw,65px);margin:16px 0}
+.hero p{color:#ccc;line-height:1.7}
+.btn{display:inline-block;margin-top:24px;background:#bd2946;color:white;padding:14px 25px;border:0;border-radius:5px;font-weight:bold;text-decoration:none;cursor:pointer}
+section{padding:30px 6%}
+.section-title{font-size:23px;margin-bottom:20px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:16px}
+.card{background:#17171e;border-radius:9px;overflow:hidden;transition:.2s}
+.card:hover{transform:translateY(-5px)}
+.card img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block}
+.card h3{font-size:15px;padding:12px}
+.card p{font-size:12px;color:#999;padding:0 12px 13px}
+.search{background:#1b1b23;border:1px solid #37303a;border-radius:6px;padding:12px;color:white;width:100%;margin-bottom:20px}
+footer{text-align:center;color:#777;padding:35px;border-top:1px solid #29232a;margin-top:35px;font-size:13px}
+@media(max-width:600px){nav{gap:10px}nav a{font-size:12px}.hero{min-height:370px;padding:40px 6%}}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">ATZ<span>PLAY</span></div>
+<nav>
+<a href="#ana">Ana Sayfa</a>
+<a href="#diziler">Diziler</a>
+<a href="#filmler">Filmler</a>
+</nav>
+</header>
+<main id="ana">
+<div class="hero">
+<div class="hero-content">
+<div class="tag">ATZPLAY ORIGINAL EXPERIENCE</div>
+<h1>Hikâyenin<br>Başladığı Yer.</h1>
+<p>En sevdiğin hikâyeler, tek bir yerde. Yeni dünyalar keşfet, favori içeriklerini bul.</p>
+<a href="#diziler" class="btn">KEŞFET →</a>
+</div>
+</div>
+<section id="diziler">
+<h2 class="section-title">Öne Çıkan Diziler</h2>
+<input class="search" id="search" placeholder="Dizi veya film ara..." oninput="filterCards()">
+<div class="cards" id="series">
+<div class="card"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=500" alt="Örnek içerik"><h3>Kayıp Şehir</h3><p>Gizem • Dram</p></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=500" alt="Örnek içerik"><h3>Son Gece</h3><p>Gerilim • Polisiye</p></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=500" alt="Örnek içerik"><h3>Derin Mavi</h3><p>Macera • Dram</p></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=500" alt="Örnek içerik"><h3>Son Sınır</h3><p>Aksiyon • Macera</p></div>
+</div>
+</section>
+<section id="filmler">
+<h2 class="section-title">Film Koleksiyonu</h2>
+<div class="cards">
+<div class="card"><img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500" alt="Örnek film"><h3>Yeni Dünya</h3><p>Bilim Kurgu</p></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?w=500" alt="Örnek film"><h3>Uzak Yol</h3><p>Macera</p></div>
+</div>
+</section>
+</main>
+<footer>© 2026 ATZPLAY • Hikâyenin Başladığı Yer.</footer>
+<script>
+function filterCards(){
+const q=document.getElementById('search').value.toLocaleLowerCase('tr');
+document.querySelectorAll('#series .card').forEach(card=>{
+card.style.display=card.innerText.toLocaleLowerCase('tr').includes(q)?'':'none';
+});
+}
+</script>
+</body>
+</html>
