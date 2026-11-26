@@ -3,43 +3,120 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#09090d">
+<meta name="description" content="ATZPLAY - Hikâyenin Başladığı Yer">
 <title>ATZPLAY | Hikâyenin Başladığı Yer</title>
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:#09090d;color:#fff;font-family:Arial,sans-serif}
-header{height:70px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:#101015;border-bottom:1px solid #29232a;position:sticky;top:0;z-index:5}
-.logo{font-size:25px;font-weight:900;letter-spacing:1px;color:#fff}
-.logo span{color:#bd2946}
+:root{--red:#bd2946;--bg:#09090d;--panel:#17171e}
+body{background:var(--bg);color:white;font-family:Arial,sans-serif}
+body.locked{overflow:hidden}
+header{
+height:68px;padding:0 6%;display:flex;align-items:center;
+justify-content:space-between;background:#101015;
+border-bottom:1px solid #29232a;position:sticky;top:0;z-index:10
+}
+.logo{font-size:25px;font-weight:900;letter-spacing:1px}
+.logo span{color:var(--red)}
 nav{display:flex;gap:20px}
 nav a{color:#ddd;text-decoration:none;font-size:14px}
-.hero{min-height:420px;padding:65px 7%;display:flex;align-items:center;background:linear-gradient(90deg,#09090d 15%,#09090dbb 55%,transparent),linear-gradient(0deg,#09090d,transparent),url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1400') center/cover}
-.hero-content{max-width:520px}
+nav a:hover{color:white}
+.hero{
+min-height:420px;padding:60px 7%;display:flex;align-items:center;
+background:linear-gradient(90deg,#09090d 15%,#09090dcc 60%,transparent),
+linear-gradient(0deg,#09090d,transparent),
+url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1400') center/cover
+}
+.hero-content{max-width:540px}
 .tag{color:#e14a68;font-size:12px;letter-spacing:3px;font-weight:bold}
 h1{font-size:clamp(38px,7vw,65px);margin:16px 0}
 .hero p{color:#ccc;line-height:1.7}
-.btn{display:inline-block;margin-top:24px;background:#bd2946;color:white;padding:14px 25px;border:0;border-radius:5px;font-weight:bold;text-decoration:none;cursor:pointer}
-section{padding:30px 6%}
+.btn{
+display:inline-block;margin-top:24px;background:var(--red);
+color:white;padding:14px 25px;border:0;border-radius:5px;
+font-weight:bold;text-decoration:none;cursor:pointer
+}
+section{padding:35px 6%}
 .section-title{font-size:23px;margin-bottom:20px}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:16px}
-.card{background:#17171e;border-radius:9px;overflow:hidden;transition:.2s}
-.card:hover{transform:translateY(-5px)}
-.card img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block}
-.card h3{font-size:15px;padding:12px}
-.card p{font-size:12px;color:#999;padding:0 12px 13px}
-.search{background:#1b1b23;border:1px solid #37303a;border-radius:6px;padding:12px;color:white;width:100%;margin-bottom:20px}
-.film-link{display:block;text-decoration:none;color:white}
-.nosferatu-poster{aspect-ratio:2/3;background:linear-gradient(160deg,#35101b,#09090d);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:15px;text-align:center}
-.player{width:100%;max-width:900px;background:#000;border-radius:10px;display:block}
-.player-info{color:#aaa;line-height:1.7;margin-top:14px;font-size:13px}
-footer{text-align:center;color:#777;padding:35px;border-top:1px solid #29232a;margin-top:35px;font-size:13px}
+.section-info{font-size:13px;color:#999;margin:-10px 0 20px}
+.search{
+background:#1b1b23;border:1px solid #37303a;border-radius:7px;
+padding:14px;color:white;width:100%;margin-bottom:22px;font-size:15px
+}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:17px}
+.card{
+background:var(--panel);border-radius:9px;overflow:hidden;
+border:1px solid #25232b;transition:.2s
+}
+.card button{
+display:block;width:100%;background:none;border:0;color:white;
+text-align:left;cursor:pointer;font:inherit
+}
+.card.playable:hover{transform:translateY(-5px);border-color:#753044}
+.poster{
+aspect-ratio:2/3;display:flex;align-items:center;
+justify-content:center;flex-direction:column;text-align:center;
+padding:15px;position:relative;overflow:hidden
+}
+.poster:after{
+content:"";position:absolute;inset:0;
+background:linear-gradient(0deg,#09090d 0%,transparent 70%);
+pointer-events:none
+}
+.poster small,.poster strong,.poster span{position:relative;z-index:1}
+.poster small{color:#ff9aad;letter-spacing:3px;font-size:10px}
+.poster strong{font-size:25px;margin-top:25px;text-shadow:0 3px 10px #000}
+.poster span{font-size:12px;color:#eee;margin-top:12px}
+.p1{background:linear-gradient(145deg,#3e1730,#101522 65%,#08090d)}
+.p2{background:linear-gradient(145deg,#263b52,#11121c 65%,#08090d)}
+.p3{background:linear-gradient(145deg,#52251c,#17131b 65%,#08090d)}
+.p4{background:linear-gradient(145deg,#173a36,#101722 65%,#08090d)}
+.p5{background:linear-gradient(145deg,#452d16,#17131b 65%,#08090d)}
+.card h3{font-size:15px;padding:12px 12px 5px}
+.card p{font-size:12px;color:#999;padding:0 12px 10px}
+.play-label{color:#e14a68;font-size:11px;padding:0 12px 13px;font-weight:bold}
+.empty{display:none;color:#aaa;padding:20px 0;font-size:14px}
+.coming{opacity:.65}
+footer{
+text-align:center;color:#777;padding:35px;border-top:1px solid #29232a;
+margin-top:35px;font-size:13px;line-height:1.8
+}
+
+/* ATZPLAY OYNATICI */
+.player-overlay{
+display:none;position:fixed;inset:0;background:rgba(0,0,0,.97);
+z-index:100;padding:20px;align-items:center;justify-content:center;
+overflow-y:auto
+}
+.player-overlay.open{display:flex}
+.player-box{width:min(100%,1000px);margin:auto}
+.player-top{
+display:flex;align-items:center;justify-content:space-between;
+margin-bottom:15px;gap:15px
+}
+.player-title{font-size:19px;font-weight:bold}
+.close-player{
+background:#29232a;color:white;border:1px solid #51434b;
+border-radius:50%;width:42px;height:42px;font-size:24px;cursor:pointer
+}
+.close-player:hover{background:var(--red)}
+.video-wrap{width:100%;aspect-ratio:16/9;background:#000;border-radius:9px;overflow:hidden}
+.video-wrap iframe{width:100%;height:100%;border:0;display:block}
+.player-info{padding:15px 2px;color:#aaa;font-size:13px;line-height:1.8}
+.player-info strong{color:white}
+.player-credit{color:#aaa;font-size:12px;margin-top:8px}
 @media(max-width:600px){
-nav{gap:10px}
-nav a{font-size:12px}
+header{height:62px;padding:0 5%}
+.logo{font-size:22px}
+nav{gap:11px}
+nav a{font-size:11px}
 .hero{min-height:370px;padding:40px 6%}
+section{padding:28px 5%}
+.cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.player-overlay{padding:12px}
+.player-title{font-size:16px}
 }
 </style>
 </head>
@@ -61,99 +138,189 @@ nav a{font-size:12px}
 <div class="hero-content">
 <div class="tag">ATZPLAY ORIGINAL EXPERIENCE</div>
 <h1>Hikâyenin<br>Başladığı Yer.</h1>
-<p>En sevdiğin hikâyeler, tek bir yerde. Yeni dünyalar keşfet, favori içeriklerini bul.</p>
-<a href="#filmler" class="btn">KEŞFET →</a>
+<p>Yeni dünyalar keşfet. Açık lisanslı filmleri ATZPLAY üzerinden izle.</p>
+<a href="#filmler" class="btn">FİLMLERİ KEŞFET →</a>
 </div>
 </div>
-
-<section id="diziler">
-<h2 class="section-title">Öne Çıkan Diziler</h2>
-<input class="search" id="search" placeholder="Dizi veya film ara..." oninput="filterCards()">
-
-<div class="cards" id="series">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=500" alt="Kayıp Şehir">
-<h3>Kayıp Şehir</h3><p>Gizem • Dram</p>
-</div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=500" alt="Son Gece">
-<h3>Son Gece</h3><p>Gerilim • Polisiye</p>
-</div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=500" alt="Derin Mavi">
-<h3>Derin Mavi</h3><p>Macera • Dram</p>
-</div>
-<div class="card">
-<img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=500" alt="Son Sınır">
-<h3>Son Sınır</h3><p>Aksiyon • Macera</p>
-</div>
-</div>
-</section>
 
 <section id="filmler">
 <h2 class="section-title">Film Koleksiyonu</h2>
+<p class="section-info">Filme dokun, ATZPLAY oynatıcısında izle.</p>
 
-<div class="cards" id="films">
+<input class="search" id="search"
+placeholder="Film veya dizi ara..." oninput="filterCards()">
 
-<a class="film-link" href="#nosferatu">
-<div class="card">
-<div class="nosferatu-poster">
-<span style="color:#e14a68;font-size:12px;letter-spacing:4px">ATZPLAY CLASSICS</span>
-<strong style="font-size:30px;margin-top:25px">NOSFERATU</strong>
-<span style="font-size:13px;color:#ddd;margin-top:12px">1922 • SESSİZ KORKU</span>
+<div class="cards" id="filmCards">
+
+<div class="card playable" data-title="sprite fright korku komedi 2021">
+<button onclick="openPlayer(' _cMxraX_5RE','Sprite Fright (2021)','© Blender Foundation | studio.blender.org')">
+<div class="poster p1">
+<small>ATZPLAY OPEN CINEMA</small>
+<strong>SPRITE<br>FRIGHT</strong>
+<span>2021 • KORKU / KOMEDİ</span>
 </div>
-<h3>Nosferatu (1922)</h3>
-<p>Korku • Klasik • 1922</p>
-</div>
-</a>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500" alt="Yeni Dünya">
-<h3>Yeni Dünya</h3><p>Bilim Kurgu</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?w=500" alt="Uzak Yol">
-<h3>Uzak Yol</h3><p>Macera</p>
+<h3>Sprite Fright (2021)</h3>
+<p>Korku • Komedi • Animasyon</p>
+<div class="play-label">▶ ŞİMDİ İZLE</div>
+</button>
 </div>
 
+<div class="card playable" data-title="charge bilim kurgu aksiyon 2022">
+<button onclick="openPlayer('UXqq0ZvbOnk','Charge (2022)','© Blender Foundation | studio.blender.org')">
+<div class="poster p2">
+<small>ATZPLAY OPEN CINEMA</small>
+<strong>CHARGE</strong>
+<span>2022 • BİLİM KURGU</span>
 </div>
+<h3>Charge (2022)</h3>
+<p>Bilim Kurgu • Aksiyon</p>
+<div class="play-label">▶ ŞİMDİ İZLE</div>
+</button>
+</div>
+
+<div class="card playable" data-title="tears of steel çelik gözyaşları bilim kurgu 2012">
+<button onclick="openPlayer('R6MlUcmOul8','Tears of Steel (2012)','(CC) Blender Foundation | mango.blender.org')">
+<div class="poster p3">
+<small>ATZPLAY OPEN CINEMA</small>
+<strong>TEARS<br>OF STEEL</strong>
+<span>2012 • BİLİM KURGU</span>
+</div>
+<h3>Tears of Steel (2012)</h3>
+<p>Bilim Kurgu • Aksiyon</p>
+<div class="play-label">▶ ŞİMDİ İZLE</div>
+</button>
+</div>
+
+<div class="card playable" data-title="sintel fantastik macera 2010">
+<button onclick="openPlayer('eRsGyueVLvQ','Sintel (2010)','© copyright Blender Foundation | durian.blender.org')">
+<div class="poster p4">
+<small>ATZPLAY OPEN CINEMA</small>
+<strong>SINTEL</strong>
+<span>2010 • FANTASTİK</span>
+</div>
+<h3>Sintel (2010)</h3>
+<p>Fantastik • Macera</p>
+<div class="play-label">▶ ŞİMDİ İZLE</div>
+</button>
+</div>
+
+<div class="card playable" data-title="big buck bunny animasyon komedi 2008">
+<button onclick="openPlayer('YE7VzlLtp-4','Big Buck Bunny (2008)','© copyright 2008, Blender Foundation | bigbuckbunny.org')">
+<div class="poster p5">
+<small>ATZPLAY OPEN CINEMA</small>
+<strong>BIG BUCK<br>BUNNY</strong>
+<span>2008 • KOMEDİ</span>
+</div>
+<h3>Big Buck Bunny (2008)</h3>
+<p>Animasyon • Komedi</p>
+<div class="play-label">▶ ŞİMDİ İZLE</div>
+</button>
+</div>
+
+</div>
+<p class="empty" id="filmEmpty">Aradığın film bulunamadı.</p>
 </section>
 
-<section id="nosferatu">
-<h2 class="section-title">Nosferatu (1922)</h2>
-<p style="color:#aaa;margin-bottom:15px">
-Klasik korku filmi • Friedrich Wilhelm Murnau
-</p>
-
-<video class="player" controls playsinline preload="metadata">
-<source src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Nosferatu_le_vampire-Film_Murnau_1922.webm" type="video/webm">
-Tarayıcınız bu video biçimini desteklemiyor.
-</video>
-
-<p class="player-info">
-Film kaynağı: Wikimedia Commons.<br>
-Dosya sayfasında CC0 / Public Domain bilgisi belirtilmiştir.
-Ticari yayın öncesinde kullanım hakları ayrıca doğrulanmalıdır.
-<br>
-<a style="color:#e14a68" href="https://commons.wikimedia.org/wiki/File:Nosferatu_le_vampire-Film_Murnau_1922.webm" target="_blank">
-Kaynak ve lisans bilgileri
-</a>
-</p>
+<section id="diziler">
+<h2 class="section-title">Diziler</h2>
+<p class="section-info">Dizi kataloğu hazırlanıyor. Yakında ATZPLAY'de.</p>
+<div class="cards">
+<div class="card coming">
+<div class="poster p2">
+<small>ATZPLAY</small>
+<strong>YAKINDA</strong>
+<span>DİZİ KOLEKSİYONU</span>
+</div>
+<h3>Yeni diziler</h3>
+<p>Hazırlanıyor</p>
+</div>
+</div>
 </section>
 
 </main>
 
+<!-- ATZPLAY VIDEO MODALI -->
+<div class="player-overlay" id="playerOverlay"
+role="dialog" aria-modal="true" aria-label="ATZPLAY oynatıcı"
+onclick="outsideClose(event)">
+
+<div class="player-box">
+<div class="player-top">
+<div class="player-title" id="playerTitle">ATZPLAY Oynatıcı</div>
+<button class="close-player" onclick="closePlayer()" aria-label="Kapat">×</button>
+</div>
+
+<div class="video-wrap">
+<iframe id="videoFrame"
+src=""
+title="ATZPLAY video oynatıcı"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen
+referrerpolicy="strict-origin-when-cross-origin">
+</iframe>
+</div>
+
+<div class="player-info">
+<strong id="filmName"></strong>
+<div class="player-credit" id="filmCredit"></div>
+<p style="margin-top:8px">
+Film, hak sahibinin resmî YouTube oynatıcısı üzerinden ATZPLAY içinde gösterilir.
+</p>
+</div>
+</div>
+</div>
+
 <footer>
-© 2026 ATZPLAY • Hikâyenin Başladığı Yer.
+<strong>ATZ<span style="color:#bd2946">PLAY</span></strong><br>
+© 2026 ATZPLAY • Hikâyenin Başladığı Yer.<br>
+Film sahiplerine ve lisans koşullarına uygun şekilde yayınlanır.
 </footer>
 
 <script>
-function filterCards(){
-const q=document.getElementById('search').value.toLocaleLowerCase('tr');
-document.querySelectorAll('#series .card, #films .card').forEach(card=>{
-card.style.display=card.innerText.toLocaleLowerCase('tr').includes(q)?'':'none';
+const overlay=document.getElementById("playerOverlay");
+const frame=document.getElementById("videoFrame");
+
+function openPlayer(id,title,credit){
+  document.getElementById("playerTitle").textContent=title;
+  document.getElementById("filmName").textContent=title;
+  document.getElementById("filmCredit").textContent=credit;
+
+  frame.src="https://www.youtube-nocookie.com/embed/"+id+
+    "?autoplay=1&playsinline=1&rel=0";
+
+  overlay.classList.add("open");
+  document.body.classList.add("locked");
+}
+
+function closePlayer(){
+  frame.src="";
+  overlay.classList.remove("open");
+  document.body.classList.remove("locked");
+}
+
+function outsideClose(event){
+  if(event.target===overlay) closePlayer();
+}
+
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape" && overlay.classList.contains("open")){
+    closePlayer();
+  }
 });
+
+function filterCards(){
+  const q=document.getElementById("search").value
+    .toLocaleLowerCase("tr").trim();
+
+  let count=0;
+
+  document.querySelectorAll("#filmCards .card").forEach(card=>{
+    const match=card.dataset.title.includes(q);
+    card.style.display=match?"":"none";
+    if(match) count++;
+  });
+
+  document.getElementById("filmEmpty").style.display=count?"none":"block";
 }
 </script>
 
