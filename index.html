@@ -6,8 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#09090d">
 <title>ATZPLAY | Hikâyenin Başladığı Yer</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{background:#09090d;color:#fff;font-family:Arial,sans-serif}
 header{height:70px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:#101015;border-bottom:1px solid #29232a;position:sticky;top:0;z-index:5}
 .logo{font-size:25px;font-weight:900;letter-spacing:1px;color:#fff}
@@ -29,11 +31,21 @@ section{padding:30px 6%}
 .card h3{font-size:15px;padding:12px}
 .card p{font-size:12px;color:#999;padding:0 12px 13px}
 .search{background:#1b1b23;border:1px solid #37303a;border-radius:6px;padding:12px;color:white;width:100%;margin-bottom:20px}
+.film-link{display:block;text-decoration:none;color:white}
+.nosferatu-poster{aspect-ratio:2/3;background:linear-gradient(160deg,#35101b,#09090d);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:15px;text-align:center}
+.player{width:100%;max-width:900px;background:#000;border-radius:10px;display:block}
+.player-info{color:#aaa;line-height:1.7;margin-top:14px;font-size:13px}
 footer{text-align:center;color:#777;padding:35px;border-top:1px solid #29232a;margin-top:35px;font-size:13px}
-@media(max-width:600px){nav{gap:10px}nav a{font-size:12px}.hero{min-height:370px;padding:40px 6%}}
+@media(max-width:600px){
+nav{gap:10px}
+nav a{font-size:12px}
+.hero{min-height:370px;padding:40px 6%}
+}
 </style>
 </head>
+
 <body>
+
 <header>
 <div class="logo">ATZ<span>PLAY</span></div>
 <nav>
@@ -42,23 +54,50 @@ footer{text-align:center;color:#777;padding:35px;border-top:1px solid #29232a;ma
 <a href="#filmler">Filmler</a>
 </nav>
 </header>
+
 <main id="ana">
+
 <div class="hero">
 <div class="hero-content">
 <div class="tag">ATZPLAY ORIGINAL EXPERIENCE</div>
 <h1>Hikâyenin<br>Başladığı Yer.</h1>
 <p>En sevdiğin hikâyeler, tek bir yerde. Yeni dünyalar keşfet, favori içeriklerini bul.</p>
-<a href="#diziler" class="btn">KEŞFET →</a>
+<a href="#filmler" class="btn">KEŞFET →</a>
 </div>
 </div>
-<section 
+
+<section id="diziler">
+<h2 class="section-title">Öne Çıkan Diziler</h2>
+<input class="search" id="search" placeholder="Dizi veya film ara..." oninput="filterCards()">
+
+<div class="cards" id="series">
+<div class="card">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=500" alt="Kayıp Şehir">
+<h3>Kayıp Şehir</h3><p>Gizem • Dram</p>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=500" alt="Son Gece">
+<h3>Son Gece</h3><p>Gerilim • Polisiye</p>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=500" alt="Derin Mavi">
+<h3>Derin Mavi</h3><p>Macera • Dram</p>
+</div>
+<div class="card">
+<img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=500" alt="Son Sınır">
+<h3>Son Sınır</h3><p>Aksiyon • Macera</p>
+</div>
+</div>
+</section>
+
 <section id="filmler">
 <h2 class="section-title">Film Koleksiyonu</h2>
-<div class="cards">
 
-<a href="https://commons.wikimedia.org/wiki/File:Nosferatu_le_vampire-Film_Murnau_1922.webm" target="_blank" style="text-decoration:none;color:white">
+<div class="cards" id="films">
+
+<a class="film-link" href="#nosferatu">
 <div class="card">
-<div style="aspect-ratio:2/3;background:linear-gradient(160deg,#35101b,#09090d);display:flex;align-items:center;justify-content:center;flex-direction:column;padding:15px;text-align:center">
+<div class="nosferatu-poster">
 <span style="color:#e14a68;font-size:12px;letter-spacing:4px">ATZPLAY CLASSICS</span>
 <strong style="font-size:30px;margin-top:25px">NOSFERATU</strong>
 <span style="font-size:13px;color:#ddd;margin-top:12px">1922 • SESSİZ KORKU</span>
@@ -69,45 +108,54 @@ footer{text-align:center;color:#777;padding:35px;border-top:1px solid #29232a;ma
 </a>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500" alt="Film">
-<h3>Yeni Dünya</h3>
-<p>Bilim Kurgu</p>
+<img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500" alt="Yeni Dünya">
+<h3>Yeni Dünya</h3><p>Bilim Kurgu</p>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?w=500" alt="Film">
-<h3>Uzak Yol</h3>
-<p>Macera</p>
+<img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?w=500" alt="Uzak Yol">
+<h3>Uzak Yol</h3><p>Macera</p>
 </div>
 
 </div>
 </section>
->
-<h2 class="section-title">Öne Çıkan Diziler</h2>
-<input class="search" id="search" placeholder="Dizi veya film ara..." oninput="filterCards()">
-<div class="cards" id="series">
-<div class="card"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=500" alt="Örnek içerik"><h3>Kayıp Şehir</h3><p>Gizem • Dram</p></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=500" alt="Örnek içerik"><h3>Son Gece</h3><p>Gerilim • Polisiye</p></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=500" alt="Örnek içerik"><h3>Derin Mavi</h3><p>Macera • Dram</p></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=500" alt="Örnek içerik"><h3>Son Sınır</h3><p>Aksiyon • Macera</p></div>
-</div>
+
+<section id="nosferatu">
+<h2 class="section-title">Nosferatu (1922)</h2>
+<p style="color:#aaa;margin-bottom:15px">
+Klasik korku filmi • Friedrich Wilhelm Murnau
+</p>
+
+<video class="player" controls playsinline preload="metadata">
+<source src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Nosferatu_le_vampire-Film_Murnau_1922.webm" type="video/webm">
+Tarayıcınız bu video biçimini desteklemiyor.
+</video>
+
+<p class="player-info">
+Film kaynağı: Wikimedia Commons.<br>
+Dosya sayfasında CC0 / Public Domain bilgisi belirtilmiştir.
+Ticari yayın öncesinde kullanım hakları ayrıca doğrulanmalıdır.
+<br>
+<a style="color:#e14a68" href="https://commons.wikimedia.org/wiki/File:Nosferatu_le_vampire-Film_Murnau_1922.webm" target="_blank">
+Kaynak ve lisans bilgileri
+</a>
+</p>
 </section>
-<section id="filmler">
-<h2 class="section-title">Film Koleksiyonu</h2>
-<div class="cards">
-<div class="card"><img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=500" alt="Örnek film"><h3>Yeni Dünya</h3><p>Bilim Kurgu</p></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?w=500" alt="Örnek film"><h3>Uzak Yol</h3><p>Macera</p></div>
-</div>
-</section>
+
 </main>
-<footer>© 2026 ATZPLAY • Hikâyenin Başladığı Yer.</footer>
+
+<footer>
+© 2026 ATZPLAY • Hikâyenin Başladığı Yer.
+</footer>
+
 <script>
 function filterCards(){
 const q=document.getElementById('search').value.toLocaleLowerCase('tr');
-document.querySelectorAll('#series .card').forEach(card=>{
+document.querySelectorAll('#series .card, #films .card').forEach(card=>{
 card.style.display=card.innerText.toLocaleLowerCase('tr').includes(q)?'':'none';
 });
 }
 </script>
+
 </body>
 </html>
