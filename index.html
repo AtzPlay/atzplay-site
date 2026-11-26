@@ -70,22 +70,16 @@ pointer-events:none
 .poster strong{font-size:25px;margin-top:25px;text-shadow:0 3px 10px #000}
 .poster span{font-size:12px;color:#eee;margin-top:12px}
 .p1{background:linear-gradient(145deg,#3e1730,#101522 65%,#08090d)}
-.p2{background:linear-gradient(145deg,#263b52,#11121c 65%,#08090d)}
-.p3{background:linear-gradient(145deg,#52251c,#17131b 65%,#08090d)}
-.p4{background:linear-gradient(145deg,#173a36,#101722 65%,#08090d)}
-.p5{background:linear-gradient(145deg,#452d16,#17131b 65%,#08090d)}
 .card h3{font-size:15px;padding:12px 12px 5px}
 .card p{font-size:12px;color:#999;padding:0 12px 10px}
 .play-label{color:#e14a68;font-size:11px;padding:0 12px 13px;font-weight:bold}
-.coming-label{color:#999;font-size:11px;padding:0 12px 13px}
 .empty{display:none;color:#aaa;padding:20px 0;font-size:14px}
-.coming{opacity:.65}
 footer{
 text-align:center;color:#777;padding:35px;border-top:1px solid #29232a;
 margin-top:35px;font-size:13px;line-height:1.8
 }
 
-/* ATZPLAY KENDİ VİDEO OYNATICISI */
+/* ATZPLAY OYNATICI */
 .player-overlay{
 display:none;position:fixed;inset:0;background:rgba(0,0,0,.97);
 z-index:100;padding:20px;align-items:center;justify-content:center;
@@ -107,14 +101,12 @@ border-radius:50%;width:42px;height:42px;font-size:24px;cursor:pointer
 width:100%;aspect-ratio:16/9;background:#000;
 border-radius:9px;overflow:hidden
 }
-.video-wrap video{
-width:100%;height:100%;display:block;background:#000;
-object-fit:contain
+.video-wrap iframe{
+width:100%;height:100%;display:block;border:0
 }
 .player-info{padding:15px 2px;color:#aaa;font-size:13px;line-height:1.8}
 .player-info strong{color:white}
 .player-credit{color:#aaa;font-size:12px;margin-top:8px}
-.player-error{display:none;color:#ff9aad;margin-top:10px;font-size:13px}
 
 @media(max-width:600px){
 header{height:62px;padding:0 5%}
@@ -147,79 +139,32 @@ section{padding:28px 5%}
 <div class="hero-content">
 <div class="tag">ATZPLAY ORIGINAL EXPERIENCE</div>
 <h1>Hikâyenin<br>Başladığı Yer.</h1>
-<p>Yeni dünyalar keşfet. Açık lisanslı filmleri ATZPLAY üzerinden izle.</p>
+<p>Filmlerini keşfet. Hikâyenin keyfini ATZPLAY'de çıkar.</p>
 <a href="#filmler" class="btn">FİLMLERİ KEŞFET →</a>
 </div>
 </div>
 
 <section id="filmler">
 <h2 class="section-title">Film Koleksiyonu</h2>
-<p class="section-info">Filme dokun, ATZPLAY oynatıcısında izle.</p>
+<p class="section-info">Filme dokun, ATZPLAY oynatıcı penceresinde izle.</p>
 
 <input class="search" id="search"
-placeholder="Film veya dizi ara..." oninput="filterCards()">
+placeholder="Film ara..." oninput="filterCards()">
 
 <div class="cards" id="filmCards">
 
-<div class="card playable" data-title="sprite fright korku komedi 2021">
-<button onclick="openPlayer(
-'https://upload.wikimedia.org/wikipedia/commons/7/74/Sprite_Fright_-_Open_Movie_by_Blender_Studio.webm',
-'Sprite Fright (2021)',
-'(CC) Blender Foundation | studio.blender.org'
-)">
+<div class="card playable"
+data-title="poyraz karayel küresel sermaye aksiyon komedi 2017">
+<button onclick="openPlayer()">
 <div class="poster p1">
-<small>ATZPLAY OPEN CINEMA</small>
-<strong>SPRITE<br>FRIGHT</strong>
-<span>2021 • KORKU / KOMEDİ</span>
+<small>ATZPLAY MOVIE</small>
+<strong>POYRAZ<br>KARAYEL</strong>
+<span>KÜRESEL SERMAYE • 2017</span>
 </div>
-<h3>Sprite Fright (2021)</h3>
-<p>Korku • Komedi • Animasyon</p>
+<h3>Poyraz Karayel: Küresel Sermaye</h3>
+<p>Aksiyon • Komedi • 2017</p>
 <div class="play-label">▶ ŞİMDİ İZLE</div>
 </button>
-</div>
-
-<div class="card coming" data-title="charge bilim kurgu aksiyon 2022">
-<div class="poster p2">
-<small>ATZPLAY OPEN CINEMA</small>
-<strong>CHARGE</strong>
-<span>2022 • BİLİM KURGU</span>
-</div>
-<h3>Charge (2022)</h3>
-<p>Bilim Kurgu • Aksiyon</p>
-<div class="coming-label">YAKINDA</div>
-</div>
-
-<div class="card coming" data-title="tears of steel çelik gözyaşları bilim kurgu 2012">
-<div class="poster p3">
-<small>ATZPLAY OPEN CINEMA</small>
-<strong>TEARS<br>OF STEEL</strong>
-<span>2012 • BİLİM KURGU</span>
-</div>
-<h3>Tears of Steel (2012)</h3>
-<p>Bilim Kurgu • Aksiyon</p>
-<div class="coming-label">YAKINDA</div>
-</div>
-
-<div class="card coming" data-title="sintel fantastik macera 2010">
-<div class="poster p4">
-<small>ATZPLAY OPEN CINEMA</small>
-<strong>SINTEL</strong>
-<span>2010 • FANTASTİK</span>
-</div>
-<h3>Sintel (2010)</h3>
-<p>Fantastik • Macera</p>
-<div class="coming-label">YAKINDA</div>
-</div>
-
-<div class="card coming" data-title="big buck bunny animasyon komedi 2008">
-<div class="poster p5">
-<small>ATZPLAY OPEN CINEMA</small>
-<strong>BIG BUCK<br>BUNNY</strong>
-<span>2008 • KOMEDİ</span>
-</div>
-<h3>Big Buck Bunny (2008)</h3>
-<p>Animasyon • Komedi</p>
-<div class="coming-label">YAKINDA</div>
 </div>
 
 </div>
@@ -230,90 +175,66 @@ placeholder="Film veya dizi ara..." oninput="filterCards()">
 <section id="diziler">
 <h2 class="section-title">Diziler</h2>
 <p class="section-info">Dizi kataloğu hazırlanıyor. Yakında ATZPLAY'de.</p>
-<div class="cards">
-<div class="card coming">
-<div class="poster p2">
-<small>ATZPLAY</small>
-<strong>YAKINDA</strong>
-<span>DİZİ KOLEKSİYONU</span>
-</div>
-<h3>Yeni diziler</h3>
-<p>Hazırlanıyor</p>
-</div>
-</div>
 </section>
 
 </main>
 
-<!-- ATZPLAY VİDEO MODALI -->
+<!-- ATZPLAY OYNATICI PENCERESİ -->
 <div class="player-overlay" id="playerOverlay"
-role="dialog" aria-modal="true" aria-label="ATZPLAY oynatıcı"
+role="dialog" aria-modal="true"
+aria-label="ATZPLAY film oynatıcı"
 onclick="outsideClose(event)">
 
 <div class="player-box">
+
 <div class="player-top">
-<div class="player-title" id="playerTitle">ATZPLAY Oynatıcı</div>
-<button class="close-player" onclick="closePlayer()" aria-label="Kapat">×</button>
+<div class="player-title" id="playerTitle">
+Poyraz Karayel: Küresel Sermaye
+</div>
+<button class="close-player"
+onclick="closePlayer()" aria-label="Kapat">×</button>
 </div>
 
 <div class="video-wrap">
-<video id="videoPlayer" controls playsinline preload="metadata">
-Tarayıcınız video oynatmayı desteklemiyor.
-</video>
+<iframe id="videoFrame"
+src=""
+title="Poyraz Karayel Küresel Sermaye"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen
+referrerpolicy="strict-origin-when-cross-origin">
+</iframe>
 </div>
 
 <div class="player-info">
-<strong id="filmName"></strong>
-<div class="player-credit" id="filmCredit"></div>
+<strong>Poyraz Karayel: Küresel Sermaye (2017)</strong>
+<div class="player-credit">Yapım: Limon Yapım</div>
 <p style="margin-top:8px">
-Video, ATZPLAY'in kendi HTML5 oynatıcısında gösterilir.
-</p>
-<p class="player-error" id="playerError">
-Video yüklenemedi. Bağlantıyı veya internet bağlantını kontrol et.
+Resmî yayın, ATZPLAY oynatıcı penceresinde gösterilmektedir.
 </p>
 </div>
+
 </div>
 </div>
 
 <footer>
 <strong>ATZ<span style="color:#bd2946">PLAY</span></strong><br>
 © 2026 ATZPLAY • Hikâyenin Başladığı Yer.<br>
-Film sahiplerine ve lisans koşullarına uygun şekilde yayınlanır.
+İçerikler hak sahiplerinin resmî yayınları üzerinden gösterilir.
 </footer>
 
 <script>
 const overlay=document.getElementById("playerOverlay");
-const video=document.getElementById("videoPlayer");
-const errorMessage=document.getElementById("playerError");
+const frame=document.getElementById("videoFrame");
 
-function openPlayer(url,title,credit){
-  document.getElementById("playerTitle").textContent=title;
-  document.getElementById("filmName").textContent=title;
-  document.getElementById("filmCredit").textContent=credit;
-
-  errorMessage.style.display="none";
-  video.pause();
-  video.removeAttribute("src");
-  video.load();
-
-  video.src=url;
-  video.load();
+function openPlayer(){
+  frame.src="https://www.youtube-nocookie.com/embed/k5NV37m4Zd8?autoplay=1&playsinline=1&rel=0";
 
   overlay.classList.add("open");
   document.body.classList.add("locked");
-
-  const playRequest=video.play();
-  if(playRequest){
-    playRequest.catch(function(){
-      // Otomatik oynatma engellenirse kullanıcı oynat tuşuna basabilir.
-    });
-  }
 }
 
 function closePlayer(){
-  video.pause();
-  video.removeAttribute("src");
-  video.load();
+  frame.src="";
   overlay.classList.remove("open");
   document.body.classList.remove("locked");
 }
@@ -321,10 +242,6 @@ function closePlayer(){
 function outsideClose(event){
   if(event.target===overlay) closePlayer();
 }
-
-video.addEventListener("error",function(){
-  errorMessage.style.display="block";
-});
 
 document.addEventListener("keydown",event=>{
   if(event.key==="Escape" && overlay.classList.contains("open")){
